@@ -1,8 +1,9 @@
-#include <eosiolib/eosio.hpp>
-#include <eosiolib/time.hpp>
-#include <eosiolib/multi_index.hpp>
-#include <eosiolib/crypto.hpp>
-#include <eosiolib/print.hpp>
+#include <eosio/system.hpp>
+#include <eosio/eosio.hpp>
+#include <eosio/time.hpp>
+#include <eosio/multi_index.hpp>
+#include <eosio/crypto.hpp>
+#include <eosio/print.hpp>
 
 using namespace eosio;
 
@@ -26,11 +27,11 @@ public:
                 current_imp.owner = scp_account;
                 current_imp.e_email = e_email;
                 current_imp.h_email_ui128 = e_hash_hex128;
-                current_imp.created_at = eosio::time_point_sec(now());
+                current_imp.created_at = eosio::time_point_sec(current_time_point().sec_since_epoch());
             });
         }
         else {
-            eosio_assert(true == false, "Email already in use.");
+            check(true == false, "Email already in use.");
         }
     }
 
@@ -39,7 +40,7 @@ public:
         require_auth(_self);
         print("deleteuser - account = ", eosio::name{scp_account}, "\n");
         auto itr = table.find(scp_account.value);
-        eosio_assert(itr != table.end(), "Row not found (2).");
+        check(itr != table.end(), "Row not found (2).");
         table.erase(itr);
     }
 

@@ -1,14 +1,15 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Tue Mar 19 18:05:03 2019",
-    "version": "eosio::abi/1.1",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.2",
+    "types": [],
     "structs": [
         {
             "name": "deleteuser",
             "base": "",
             "fields": [
                 {
-                    "name": "e_hash_hex128",
-                    "type": "uint128"
+                    "name": "scp_account",
+                    "type": "name"
                 }
             ]
         },
@@ -97,7 +98,6 @@
             ]
         }
     ],
-    "types": [],
     "actions": [
         {
             "name": "deleteuser",
@@ -144,5 +144,5 @@
         }
     ],
     "variants": [],
-    "abi_extensions": []
+    "action_results": []
 }
